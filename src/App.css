@@ -1,3 +1,8 @@
+.botones-contador{
+  display: flex;
+  column-gap: 5px;
+}
+
 .App {
   text-align: center;
 }

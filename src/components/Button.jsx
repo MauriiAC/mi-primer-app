@@ -1,9 +1,14 @@
 import React from 'react'
 
-export const Button = ({ aumentaContador }) => {
+const buttonStyles = {
+  "border": "solid 3px green",
+  "marginTop": "5px"
+}
+
+export const Button = ({ cambiaContador, text }) => {
   return (
-    <button onClick={aumentaContador}>
-      +1
+    <button style={buttonStyles} onClick={cambiaContador}>
+      {text}
     </button>
   )
 }
