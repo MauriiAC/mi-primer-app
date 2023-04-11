@@ -1,0 +1,8 @@
+.clickeable-container{
+  width: 50%;
+  height: 200px;
+  border: solid 2px rgb(116, 146, 116);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

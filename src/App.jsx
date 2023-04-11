@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './App.css';
 import { Button } from './components/Button';
 import { TitleContador } from './components/TitleContador';
+import { Contenedor } from './components/Contenedor';
 
 export function App( { valorInicial } ) {
 
@@ -12,9 +13,7 @@ export function App( { valorInicial } ) {
   // const setContador = (value) => {
   //   contador = value
   // }
-  
-  console.log('me estoy renderizando: ', contador)
-  
+    
   const aumentaContador = (n) => {
     setContador(contador + n)
   }
@@ -28,7 +27,7 @@ export function App( { valorInicial } ) {
   }
 
   return (
-    <div className='app-container'>
+    <Contenedor tituloApp = {"Mi primera App en React!"}>
       <TitleContador contador={contador}/>
       <div className='botones-contador'>
         <Button
@@ -44,7 +43,7 @@ export function App( { valorInicial } ) {
           text={"-5"}
         />
       </div>
-    </div>
+    </Contenedor>
   );
 }
 
