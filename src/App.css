@@ -1,3 +1,11 @@
+.user-form{
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  row-gap: 5px;
+}
+
 .botones-contador{
   display: flex;
   column-gap: 5px;

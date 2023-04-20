@@ -1,59 +1,51 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useRef } from 'react'
 import './App.css'
+import { useForm } from './hooks/useForm'
 
 export const App2 = () => {
   
   const inputRef = useRef()
 
-  const [inputValue, setInputValue] = useState("")
-  const [inputValue2, setInputValue2] = useState("")
-
-  console.log('Me estoy leyendo de nuevo')
-
-  useEffect( () => {
-    console.log("useEffect 1")
-  }, [])
-
-  useEffect( () => {
-    console.log("Cambió algún input")
-  }, [inputValue, inputValue2])
-
-  useEffect( () => {
-    console.log("Cambió el input 2")
-  }, [inputValue2])
+  const {handleInputChange, form} = useForm({
+    nombre: "",
+    apellido: "",
+    edad: ""
+  })
 
   const setFocus = ( node ) => {
     alert('Se hizo click!')
     node.focus()
   }
 
-  const handleInputChange = (e) => {
-    setInputValue(e.target.value)
+  const inputClassName = (name) => {
+    return form[name].length < 5 ? "input-red" : "input-green"
   }
-
-  const handleInputChange2 = (e) => {
-    setInputValue2(e.target.value)
-  }
-
-  const inputClassName = inputValue.length < 5 ? "input-red" : "input-green"
-  const inputClassName2 = inputValue2.length < 5 ? "input-red" : "input-green"
 
   return (
     <>
       <h1>Mi segunda App en React!</h1>
-      <form action="">
+      <form className='user-form'>
         <input
-          className={inputClassName}
+          name='nombre'
+          className={inputClassName('nombre')}
           ref={inputRef}
           type="text"
-          value={inputValue}
+          value={form.nombre}
           onChange={(e) => {handleInputChange(e)}}
         />
         <input
-          className={inputClassName2}
+          name='apellido'
+          className={inputClassName('apellido')}
           type="text"
-          value={inputValue2}
-          onChange={(e) => {handleInputChange2(e)}}
+          value={form.apellido}
+          onChange={(e) => {handleInputChange(e)}}
+        />
+        <input
+          name='edad'
+          className={inputClassName('edad')}
+          type="number"
+          value={form.edad}
+          onChange={(e) => {handleInputChange(e)}}
         />
       </form>
       <button onClick={() => { setFocus(inputRef.current)}}>
